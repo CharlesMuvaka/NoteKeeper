@@ -4,6 +4,10 @@ class DataManager {
     private val courses = HashMap<String, Course>()
     val notes = ArrayList<NoteInfo>()
 
+    init {
+        initializeCourses()
+    }
+
     private fun initializeCourses(){
         val course = Course("android_intents", "Passing data using intents")
         courses[course.courseId] = course
