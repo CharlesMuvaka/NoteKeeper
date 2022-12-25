@@ -4,6 +4,15 @@ class DataManager {
     private val courses = HashMap<String, Course>()
     val notes = ArrayList<NoteInfo>()
 
+    /*
+                        init block
+        - called when a class instance has been created
+        - doesn't take in parameters - no way to call them explicitly
+        - they can access primary constructor parameters of the class
+        - they can access member variables of the class
+     */
+
+
     init {
         initializeCourses()
     }
