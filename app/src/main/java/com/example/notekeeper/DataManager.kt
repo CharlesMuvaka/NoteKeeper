@@ -1,30 +1,30 @@
 package com.example.notekeeper
 
-class DataManager {
-    private val courses = HashMap<String, Course>()
+object DataManager {
+    val courses = HashMap<String, CourseInfo>()
     val notes = ArrayList<NoteInfo>()
 
     /*
-                        init block
-        - called when a class instance has been created
-        - doesn't take in parameters - no way to call them explicitly
-        - they can access primary constructor parameters of the class
-        - they can access member variables of the class
+                init block
+        - Doesn't accept parameters since it cannot be initialised
+        - can access the primary constructor properties of a class
+        - called when the class/object is initialised
      */
-
 
     init {
         initializeCourses()
     }
 
     private fun initializeCourses(){
-        val course = Course("android_intents", "Passing data using intents")
+
+        val course = CourseInfo("java_core", "Java Fundamentals: The core Platform")
+        val course1 = CourseInfo("java_lang", "Java Fundamentals: Java programming language")
+        val course2 = CourseInfo("android_async", "Async programming with services")
+        val course3 = CourseInfo("intents", "Passing data and starting activities using intents")
         courses[course.courseId] = course
-        val course1 = Course("java_core", "Java programming fundamentals: The core Platform")
         courses[course1.courseId] = course1
-        val course2 = Course("android_async", "Android async programming with services")
         courses[course2.courseId] = course2
-        val course3 = Course("java_lang","Java programming Fundamentals: The java Language")
         courses[course3.courseId] = course3
     }
+
 }
