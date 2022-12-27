@@ -13,8 +13,8 @@ class NotesRecAdapter(private val context: Context, private val notes:List<NoteI
     private val inflator = LayoutInflater.from(context)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val title = itemView.findViewById<TextView>(R.id.noteTitle)
-        val description = itemView.findViewById<TextView>(R.id.noteDescription)
+        val title: TextView = itemView.findViewById(R.id.noteTitle)
+        val description: TextView = itemView.findViewById(R.id.noteDescription)
 
     }
 
