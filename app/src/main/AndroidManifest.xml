@@ -15,7 +15,7 @@
             android:name=".NoteListActivity"
             android:exported="true"
             android:label="@string/title_activity_note_list"
-            android:theme="@style/Theme.NoteKeeper.NoActionBar">
+            android:theme="@style/Theme.NoteKeeper">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
