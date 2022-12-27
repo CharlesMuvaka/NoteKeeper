@@ -29,7 +29,5 @@ class NotesRecAdapter(private val context: Context, private val notes:List<NoteI
         holder.description.text = note.noteDescription
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = notes.size
 }
