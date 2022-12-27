@@ -33,6 +33,14 @@ object DataManager {
         val note1 = courses["intents"]?.let { NoteInfo(it, "introduction to java programming", "Lessons on java primitives, reference types, Generics and the collection interface") }
         val note2 = courses["android_async"]?.let { NoteInfo(it, "introduction to java programming", "Lessons on java primitives, reference types, Generics and the collection interface") }
         val note3 = courses["java_lang"]?.let { NoteInfo(it, "introduction to java programming", "Lessons on java primitives, reference types, Generics and the collection interface") }
+
+        if (note != null && note1 != null && note2 != null && note3 != null) {
+            notes.add(note)
+            notes.add(note1)
+            notes.add(note2)
+            notes.add(note3)
+        }
+
     }
 
 }
