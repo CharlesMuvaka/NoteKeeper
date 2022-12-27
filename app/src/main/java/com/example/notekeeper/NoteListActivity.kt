@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import com.example.notekeeper.databinding.ActivityNoteListBinding
 
 class NoteListActivity : AppCompatActivity(), View.OnClickListener {
@@ -14,6 +15,7 @@ class NoteListActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(bind.root)
 
         bind.fab.setOnClickListener(this)
+        bind.notesList.adapter = ArrayAdapter<NoteInfo>(this, android.R.layout.simple_list_item_1, DataManager.notes)
 
     }
 
