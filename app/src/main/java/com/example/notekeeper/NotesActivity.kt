@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.notekeeper.adapters.NotesRecAdapter
 import com.example.notekeeper.databinding.ActivityNotesBinding
 
 class NotesActivity : AppCompatActivity(), View.OnClickListener {
@@ -16,6 +17,7 @@ class NotesActivity : AppCompatActivity(), View.OnClickListener {
 
         bind.fab.setOnClickListener(this)
         bind.recView.layoutManager = LinearLayoutManager(this)
+        bind.recView.adapter = NotesRecAdapter(this, DataManager.notes)
     }
 
     override fun onClick(p0: View?) {
