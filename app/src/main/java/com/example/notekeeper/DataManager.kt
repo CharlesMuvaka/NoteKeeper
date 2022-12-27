@@ -13,6 +13,7 @@ object DataManager {
 
     init {
         initializeCourses()
+        initializeNotes()
     }
 
     private fun initializeCourses(){
@@ -25,6 +26,13 @@ object DataManager {
         courses[course1.courseId] = course1
         courses[course2.courseId] = course2
         courses[course3.courseId] = course3
+    }
+
+    private fun initializeNotes(){
+        val note = courses["java_core"]?.let { NoteInfo(it, "introduction to java programming", "Lessons on java primitives, reference types, Generics and the collection interface") }
+        val note1 = courses["intents"]?.let { NoteInfo(it, "introduction to java programming", "Lessons on java primitives, reference types, Generics and the collection interface") }
+        val note2 = courses["android_async"]?.let { NoteInfo(it, "introduction to java programming", "Lessons on java primitives, reference types, Generics and the collection interface") }
+        val note3 = courses["java_lang"]?.let { NoteInfo(it, "introduction to java programming", "Lessons on java primitives, reference types, Generics and the collection interface") }
     }
 
 }
