@@ -24,7 +24,9 @@ class NotesRecAdapter(private val context: Context, private val notes:List<NoteI
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val note = notes[position]
+        holder.title.text = note.course.courseTitle
+        holder.description.text = note.noteDescription
     }
 
     override fun getItemCount(): Int {
