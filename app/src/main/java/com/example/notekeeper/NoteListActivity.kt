@@ -16,6 +16,10 @@ class NoteListActivity : AppCompatActivity(), View.OnClickListener {
 
         bind.fab.setOnClickListener(this)
         bind.notesList.adapter = ArrayAdapter<NoteInfo>(this, android.R.layout.simple_list_item_1, DataManager.notes)
+        bind.notesList.setOnItemClickListener{parent,position, view, id ->
+            val startActivityIntent = Intent(this, MainActivity::class.java)
+            startActivity(startActivityIntent)
+        }
 
     }
 
