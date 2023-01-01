@@ -1,5 +1,6 @@
 package com.example.notekeeper
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         val adapter = ArrayAdapter<CourseInfo>(this, android.R.layout.simple_spinner_item, DataManager.courses.values.toList())
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bind.spinner.adapter = adapter
+
+        val position = intent.getIntExtra("position", 0)
 
     }
 }
