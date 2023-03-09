@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/notesFragment">
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.notekeeper.HomeFragment"
+        android:name="com.example.notekeeper.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.example.notekeeper.NotesFragment"
+        android:name="com.example.notekeeper.fragments.NotesFragment"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes" />
 </navigation>
