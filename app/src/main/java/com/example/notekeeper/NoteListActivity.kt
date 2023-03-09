@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import com.example.notekeeper.databinding.ActivityNoteListBinding
+import com.skydoves.transformationlayout.TransformationCompat
+import com.skydoves.transformationlayout.onTransformationStartContainer
 
 class NoteListActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var bind:ActivityNoteListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        onTransformationStartContainer() // should be called before super.onCreate().
         super.onCreate(savedInstanceState)
         bind = ActivityNoteListBinding.inflate(layoutInflater)
         setContentView(bind.root)
@@ -25,6 +28,6 @@ class NoteListActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        TransformationCompat.startActivity(bind.transform, intent)
     }
 }
