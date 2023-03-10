@@ -1,5 +1,7 @@
 package com.example.notekeeper.adapters
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,27 +13,34 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notekeeper.Book
 import com.example.notekeeper.R
+import com.example.notekeeper.ToTransformActivity
 import com.example.notekeeper.databinding.BookRecBinding
 import com.example.notekeeper.fragments.BookFragment
+import com.example.notekeeper.fragments.SingleBokFragment
+import com.skydoves.transformationlayout.TransformationCompat
 
-class BooksRecAdapter: RecyclerView.Adapter<BooksRecAdapter.MyHolder>() {
+class BooksRecAdapter(val cont: Context): RecyclerView.Adapter<BooksRecAdapter.MyHolder>() {
 
-    inner class MyHolder(private val bind: BookRecBinding): RecyclerView.ViewHolder(bind.root), View.OnClickListener {
+    inner class MyHolder(private val bind: BookRecBinding): RecyclerView.ViewHolder(bind.root) {
         val bundle =  Bundle()
         fun setData(book: Book){
             bind.image.setImageResource(book.imageURL!!)
             bind.title.text = book.title
-            bind.author.text = book.author
+            val author = book.author.split(" ")
+            if (author[0].length > 6){
+                bind.author.text = "${author[0].subSequence(0,1)}. ${author[1]}"
+            }else{
+                bind.author.text = book.author
+            }
             bundle.putSerializable("book", book)
 
-            bind.root.setOnClickListener(this::onClick)
-        }
-
-        override fun onClick(p0: View?) {
-            if (p0 == bind.root){
-                p0.findFragment<BookFragment>().findNavController().navigate(R.id.action_bookFragment_to_singleBokFragment, bundle)
+            bind.root.setOnClickListener{
+                val intent = Intent(cont, ToTransformActivity::class.java)
+                intent.putExtra("book", book.title)
+                TransformationCompat.startActivity(bind.transformationLayout, intent)
             }
         }
+
     }
 
     private val diffUtil = object: DiffUtil.ItemCallback<Book>(){
