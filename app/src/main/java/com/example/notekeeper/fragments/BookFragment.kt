@@ -10,6 +10,8 @@ import com.example.notekeeper.Book
 import com.example.notekeeper.BookActivity
 import com.example.notekeeper.adapters.BooksRecAdapter
 import com.example.notekeeper.databinding.FragmentBookBinding
+import com.skydoves.transformationlayout.TransformationLayout
+import com.skydoves.transformationlayout.onTransformationStartContainer
 
 class BookFragment: Fragment() {
 
@@ -17,11 +19,16 @@ class BookFragment: Fragment() {
     private lateinit var adp: BooksRecAdapter
     private var books = ArrayList<Book>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        onTransformationStartContainer()
+
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         bind = FragmentBookBinding.inflate(layoutInflater)
 
         books = (activity as BookActivity).books
-        adp = BooksRecAdapter()
+        adp = BooksRecAdapter(requireContext())
         adp.asyncList.submitList(books)
 
         //setting up the recycler view
