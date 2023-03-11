@@ -1,6 +1,9 @@
 package com.example.notekeeper.adapters
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +19,9 @@ import com.example.notekeeper.R
 import com.example.notekeeper.ToTransformActivity
 import com.example.notekeeper.databinding.BookRecBinding
 import com.example.notekeeper.fragments.BookFragment
+import com.example.notekeeper.fragments.DialogFragment
 import com.example.notekeeper.fragments.SingleBokFragment
+import com.example.notekeeper.fragments.ToTransformFragment
 import com.skydoves.transformationlayout.TransformationCompat
 
 class BooksRecAdapter(val cont: Context): RecyclerView.Adapter<BooksRecAdapter.MyHolder>() {
@@ -35,9 +40,19 @@ class BooksRecAdapter(val cont: Context): RecyclerView.Adapter<BooksRecAdapter.M
             bundle.putSerializable("book", book)
 
             bind.root.setOnClickListener{
-                val intent = Intent(cont, ToTransformActivity::class.java)
-                intent.putExtra("book", book.title)
-                TransformationCompat.startActivity(bind.transformationLayout, intent)
+                //val intent = Intent(cont, ToTransformActivity::class.java)
+                //intent.putExtra("book", book.title)
+                //TransformationCompat.startActivity(bind.transformationLayout, intent)
+
+                //getting the bundle from the transformation layout
+                val bundle = bind.transformationLayout.getBundle("TransformationParams")
+
+                //initiating the fragment to transform into
+                val fragment = ToTransformFragment.newInstance(book)
+
+                val parentFragment = bind.root.findFragment<BookFragment>()
+               //parentFragment.
+
             }
         }
 
