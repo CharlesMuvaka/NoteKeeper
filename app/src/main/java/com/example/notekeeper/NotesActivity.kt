@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notekeeper.adapters.NotesRecAdapter
 import com.example.notekeeper.databinding.ActivityNotesBinding
+import com.example.notekeeper.databinding.HeaderBinding
 import com.google.android.material.navigation.NavigationView
 
 class NotesActivity : AppCompatActivity(), View.OnClickListener {
@@ -29,7 +30,11 @@ class NotesActivity : AppCompatActivity(), View.OnClickListener {
         val navController:NavController = findNavController(R.id.fragment)
         appBarConfiguration = AppBarConfiguration(navHost.navController.graph, bind.drawerLayout)
         val drawer = findViewById<NavigationView>(R.id.drawer)
+        val header = HeaderBinding.inflate(layoutInflater)
+        bind.drawer.addHeaderView(header.root)
         drawer.setupWithNavController(navHost.navController)
+        bind.drawer.bringToFront()
+
 
         setupActionBarWithNavController(navHost.navController, appBarConfiguration)
 
