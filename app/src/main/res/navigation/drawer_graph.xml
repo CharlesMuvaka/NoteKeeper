@@ -13,6 +13,6 @@
     <fragment
         android:id="@+id/notesFragment"
         android:name="com.example.notekeeper.fragments.NotesFragment"
-        android:label="fragment_notes"
+        android:label="fragment_books"
         tools:layout="@layout/fragment_notes" />
 </navigation>
