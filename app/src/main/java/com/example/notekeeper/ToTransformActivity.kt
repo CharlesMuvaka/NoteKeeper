@@ -23,7 +23,7 @@ class ToTransformActivity : TransformationAppCompatActivity() {
         for (book in books){
             if (bookTitle == book.title){
                 bind.image.setImageResource(book.imageURL!!)
-                bind.title.text = book.title
+                bind.title.text = "${book.title} \n  By: ${book.author}"
                 bind.description.text = book.description
                 break
             }
