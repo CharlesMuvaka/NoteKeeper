@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notekeeper.Book
 import com.example.notekeeper.R
 import com.example.notekeeper.ToTransformActivity
+import com.example.notekeeper.databinding.BookHorizontalRecViewBinding
 import com.example.notekeeper.databinding.BookRecBinding
 import com.example.notekeeper.fragments.BookFragment
 import com.example.notekeeper.fragments.DialogFragment
@@ -26,31 +27,31 @@ import com.skydoves.transformationlayout.TransformationCompat
 
 class BooksRecAdapter(val cont: Context): RecyclerView.Adapter<BooksRecAdapter.MyHolder>() {
 
-    inner class MyHolder(private val bind: BookRecBinding): RecyclerView.ViewHolder(bind.root) {
+    inner class MyHolder(private val bind: BookHorizontalRecViewBinding): RecyclerView.ViewHolder(bind.root) {
         val bundle =  Bundle()
         fun setData(book: Book){
             bind.image.setImageResource(book.imageURL!!)
-            bind.title.text = book.title
+            bind.scholarName.text = book.title
             val author = book.author.split(" ")
             if (author[0].length > 6){
-                bind.author.text = "${author[0].subSequence(0,1)}. ${author[1]}"
+                bind.scholarStatus.text = "By: ${author[0].subSequence(0,1)}. ${author[1]}"
             }else{
-                bind.author.text = book.author
+                bind.scholarStatus.text = book.author
             }
             bundle.putSerializable("book", book)
 
             bind.root.setOnClickListener{
-                //val intent = Intent(cont, ToTransformActivity::class.java)
-                //intent.putExtra("book", book.title)
-                //TransformationCompat.startActivity(bind.transformationLayout, intent)
+                val intent = Intent(cont, ToTransformActivity::class.java)
+                intent.putExtra("book", book.title)
+                TransformationCompat.startActivity(bind.transformationLayout, intent)
 
                 //getting the bundle from the transformation layout
-                val bundle = bind.transformationLayout.getBundle("TransformationParams")
+                //val bundle = bind.transformationLayout.getBundle("TransformationParams")
 
                 //initiating the fragment to transform into
-                val fragment = ToTransformFragment.newInstance(book)
+                //val fragment = ToTransformFragment.newInstance(book)
 
-                val parentFragment = bind.root.findFragment<BookFragment>()
+                //val parentFragment = bind.root.findFragment<BookFragment>()
                //parentFragment.
 
             }
@@ -71,7 +72,7 @@ class BooksRecAdapter(val cont: Context): RecyclerView.Adapter<BooksRecAdapter.M
     val asyncList = AsyncListDiffer(this, diffUtil)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MyHolder(
-        BookRecBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        BookHorizontalRecViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
