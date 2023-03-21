@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:text="Think Big"
         android:layout_marginStart="4dp"
+        android:textColor="@color/purple_700"
         android:textStyle="bold"
         android:fontFamily="@font/baloo"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
